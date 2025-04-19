@@ -1,4 +1,7 @@
 # Modules
+Dieses Open Source Projekt soll möglichst viele jugendliche Teams für die Robotik mit offenen Technologien und die World Robot Olympiad (WRO) begeistern.
+Die Module sind eine mögliche technische Grundlage für einen Roboter in der Kategorie RoboMission.
+
 In den Verzeichnissen befinden sich alle relevanten Informationen zu den elektronischen db robotix Modulen:
 - Aufbauanleitung (.pdf)
 - Leiterplatte (Ordner PCB): Designdaten für das Programm EasyEDA (.json) + Gerber-Dateien für die Produktion (.zip)

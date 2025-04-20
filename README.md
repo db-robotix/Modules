@@ -1,4 +1,4 @@
-# Modules
+# Module
 Dieses Open Source Projekt soll möglichst viele jugendliche Teams für die Robotik mit offenen Technologien und die World Robot Olympiad (WRO) begeistern.
 Die Module sind eine mögliche technische Grundlage für einen Roboter in der Kategorie RoboMission.
 
@@ -11,5 +11,5 @@ Diese Unterlagen stehen frei zur Verfügung. Eine kommerzielle Nutzung bedarf je
 Der Autor übernimmt keine Haftung für mögliche Fehler in den Unterlagen oder Folgeschäden.
 Der Betrieb der Komponenten liegt in der alleinigen Verantwortung des Anwenders.
 
-Kontakt: db-robotix@web.de
+Kontakt: db-robotix@web.de <br>
 Detlef Brumbi

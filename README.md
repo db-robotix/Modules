@@ -1,6 +1,7 @@
 # Module
 Dieses Open Source Projekt soll möglichst viele jugendliche Teams für die Robotik mit offenen Technologien und die World Robot Olympiad (WRO) begeistern.
-Die Module sind eine mögliche technische Grundlage für einen Roboter in der Kategorie RoboMission.
+Die Module sind eine mögliche technische Grundlage für einen Roboter in der Kategorie RoboMission. <br>
+Eine allgemeine Projektbeschreibung befindet sich in https://github.com/db-robotix/Projekt
 
 In den Verzeichnissen befinden sich alle relevanten Informationen zu den elektronischen db robotix Modulen:
 - Aufbauanleitung (.pdf)

@@ -100,34 +100,34 @@ void MotorX::brake() {
   digitalWrite(PIN_EN, LOW);  // motors enabled
 }
 
-void MotorX::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0, int32_t value4 = 0) {
-  Serial.print("Debug ");
-  Serial.print(value1);
-  Serial.print(" : ");
-  Serial.print(value2);
-  Serial.print(" : ");
-  Serial.print(value3);
-  Serial.print(" : ");
-  Serial.println(value4);
-}
+// void MotorX::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0, int32_t value4 = 0) {
+  // Serial.print("Debug ");
+  // Serial.print(value1);
+  // Serial.print(" : ");
+  // Serial.print(value2);
+  // Serial.print(" : ");
+  // Serial.print(value3);
+  // Serial.print(" : ");
+  // Serial.println(value4);
+// }
 
-void MotorX::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0) {
-  Serial.print("Debug ");
-  Serial.print(value1);
-  Serial.print(" : ");
-  Serial.print(value2);
-  Serial.print(" : ");
-  Serial.println(value3);
-}
+// void MotorX::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0) {
+  // Serial.print("Debug ");
+  // Serial.print(value1);
+  // Serial.print(" : ");
+  // Serial.print(value2);
+  // Serial.print(" : ");
+  // Serial.println(value3);
+// }
 
-void MotorX::debugMonitor(int32_t value1, int32_t value2) {
-  Serial.print("Debug ");
-  Serial.print(value1);
-  Serial.print(" : ");
-  Serial.println(value2);
-}
+// void MotorX::debugMonitor(int32_t value1, int32_t value2) {
+  // Serial.print("Debug ");
+  // Serial.print(value1);
+  // Serial.print(" : ");
+  // Serial.println(value2);
+// }
 
-void MotorX::debugMonitor(int32_t value1) {
-  Serial.print("Debug ");
-  Serial.println(value1);
-}
+// void MotorX::debugMonitor(int32_t value1) {
+  // Serial.print("Debug ");
+  // Serial.println(value1);
+// }

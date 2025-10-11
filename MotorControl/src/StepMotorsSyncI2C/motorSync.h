@@ -44,7 +44,6 @@ public:
   void stop();
   void coast();
   void brake();
-  void getStatus();
   // void debugMonitor(int32_t value1, int32_t value2, int32_t value3, int32_t value4);
   // void debugMonitor(int32_t value1, int32_t value2, int32_t value3);
   // void debugMonitor(int32_t value1, int32_t value2);

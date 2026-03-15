@@ -1,10 +1,9 @@
-// (C) db robotix 2025
+// (C) db robotix 2025-2026
 
 #include "motorSync.h"
 #include <Wire.h>
 #include <Adafruit_NeoPixel.h>
 
-//MotorSync robot = MotorSync(26, 18, 19, 23, 5);  // pins Esp32 D1 Mini
 MotorSync robot = MotorSync(5, 4, 3, 2, 1);  // pins Esp32 S3 Mini
 TaskHandle_t Task0;
 TaskHandle_t Task1;
@@ -22,7 +21,6 @@ void core1(void* pvParameters) {  // motor control
 }
 
 void setup() {
-//  Serial.begin(115200);
   rgb.begin(); // initialize NeoPixel object
   rgb.setPixelColor(0, rgb.Color(0, 0, 32));  // blue
   rgb.show();   // send the updated pixel colors to the hardware
@@ -31,7 +29,13 @@ void setup() {
   Wire.begin(I2C_ADDRESS);  // join i2c bus with address
   Wire.onReceive(receiveEvent); // register event
   Wire.onRequest(requestEvent); // register event
-  delay(500);
+  delay(300);
+  rgb.setPixelColor(0, rgb.Color(0, 0, 0));  // off
+  rgb.show();   // send the updated pixel colors to the hardware
+  delay(300);
+  rgb.setPixelColor(0, rgb.Color(0, 0, 32));  // blue
+  rgb.show();   // send the updated pixel colors to the hardware
+  delay(300);
   rgb.setPixelColor(0, rgb.Color(0, 2, 0));  // green
   rgb.show();   // send the updated pixel colors to the hardware
 }
@@ -63,15 +67,10 @@ void receiveEvent(int howMany) {
     case STOP:     robot.stop();             break;
     case COAST:    robot.coast();            break;
     case BRAKE:    robot.brake();            break;
-//    default: Serial.println("unknown ");     break;
   }
-  //Serial.print(command);
-  //Serial.print(" : ");
-  //Serial.println(value);
   delay(1);
   rgb.setPixelColor(0, rgb.Color(0, 2, 0));  // green
   rgb.show();   // send the updated pixel colors to the hardware
-  // Serial.println(xPortGetCoreID());}  // = 0
 }
 
 void loop() { }

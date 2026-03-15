@@ -1,4 +1,4 @@
-// (C) db robotix 2025
+// (C) db robotix 2025-2026
 
 #include "motorSync.h"
 
@@ -60,7 +60,6 @@ void MotorSync::go() {
   unsigned long t0, t1, t2;  // microseconds
   int32_t td;  // loop time in microseconds
   int32_t count;
-  int32_t sL_target, sR_target; // steps
   int32_t sL_given,  sR_given, s_act;  // steps
   uint64_t sL_given_long, sR_given_long;
   int32_t s_decel;  // steps to brake
@@ -87,17 +86,6 @@ void MotorSync::go() {
   float v_max = sqrt(2.0 * s_target * accel * decel / (accel + decel));
   if (v_given > v_max) v_given = (int32_t)v_max;
 
-  if (steering < 0) {  // turn to left
-    sR_target = s_target;
-    sL_target = abs(s_target + s_target * steering / 50) ;
-  }
-  else {               // turn to right
-    sL_target = s_target;
-    sR_target = abs(s_target - s_target * steering / 50) ;
-  }
-  //debugMonitor(sL_target, sR_target);
-  //debugMonitor(accel, decel);
-
   sL_given_long = 0UL;
   sR_given_long = 0UL;
   setDirection();
@@ -107,7 +95,7 @@ void MotorSync::go() {
   t1 = 0;
   
   // start of loop
-  while (isRunning && ((sL_real < sL_target) || (sR_real < sR_target))) {
+  while (isRunning && (sL_real < s_target) && (sR_real < s_target) ) {
     delayMicroseconds(100);  // additional loop time
     t2 = micros() - t0;
     td = (int32_t)(t2 - t1);
@@ -135,8 +123,6 @@ void MotorSync::go() {
     sR_given_long += abs(vR_given) * td;
     sL_given = (int32_t)(sL_given_long / 1000000);
     sR_given = (int32_t)(sR_given_long / 1000000);
-    // debugMonitor(t2, sL_given, sR_given);  
-    // debugMonitor(sL_real, sR_real);
 
     if (sL_real < sL_given) {
       sendStep(motorL.PIN_STEP);
@@ -150,9 +136,6 @@ void MotorSync::go() {
     count++;
   }
   stop();
-  // debugMonitor(sL_real, sR_real);
-  // char serialBuffer[128];
-  // sprintf(serialBuffer, "Time: %lu us  Steps: %d of %d  %d of %d\n", t1, (int)sL_real, (int)sL_given, (int)sR_real, (int)sR_given); Serial.print(serialBuffer);  
 }
 
 void MotorSync::stop() {
@@ -170,35 +153,3 @@ void MotorSync::brake() {
   stop();
   digitalWrite(PIN_EN, LOW);  // motors enabled
 }
-
-// void MotorSync::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0, int32_t value4 = 0) {
-//   Serial.print("Debug ");
-//   Serial.print(value1);
-//   Serial.print(" : ");
-//   Serial.print(value2);
-//   Serial.print(" : ");
-//   Serial.print(value3);
-//   Serial.print(" : ");
-//   Serial.println(value4);
-// }
-
-// void MotorSync::debugMonitor(int32_t value1, int32_t value2 = 0, int32_t value3 = 0) {
-//   Serial.print("Debug ");
-//   Serial.print(value1);
-//   Serial.print(" : ");
-//   Serial.print(value2);
-//   Serial.print(" : ");
-//   Serial.println(value3);
-// }
-
-// void MotorSync::debugMonitor(int32_t value1, int32_t value2) {
-//   Serial.print("Debug ");
-//   Serial.print(value1);
-//   Serial.print(" : ");
-//   Serial.println(value2);
-// }
-
-// void MotorSync::debugMonitor(int32_t value1) {
-//   Serial.print("Debug ");
-//   Serial.println(value1);
-// }
